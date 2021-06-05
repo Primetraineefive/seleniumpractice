@@ -3,8 +3,6 @@ package browsertesting;
 import org.openqa.selenium.chrome.ChromeDriver;
 import utility.Utility;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Created by Jay
  */
@@ -14,7 +12,7 @@ public class BaseTest extends Utility {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(baseUrl);
     }
 

@@ -2,7 +2,11 @@ package utility;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Jay
@@ -17,6 +21,10 @@ public class Utility {
      */
     public void clickOnElement(By by){
         driver.findElement(by).click();
+    }
+
+    public void clickOnElement(WebElement element){
+        element.click();
     }
 
     /**
@@ -47,6 +55,30 @@ public class Utility {
         select.selectByValue(value);
     }
 
+    /**
+     * This method will used to hover mouse on element
+     */
+    public void mouseHoverToElement(By by) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(by)).build().perform();
+    }
+
+    /**
+     * This method will used to select drop down menu by visible text
+     */
+    public void selectByVisibleTextFromDropDown(By by, String str) {
+        Select select = new Select(driver.findElement(by));
+        select.selectByVisibleText(str);
+    }
+
+    /**
+     * This method will used to wait until element located
+     */
+    public WebElement waitUntilVisibilityOfElementLocated(By by, int timeout){
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        return element;
+    }
 
 
 }
